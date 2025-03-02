@@ -17,6 +17,11 @@
 - 漢検漢字辞典
 - 新明解国語辞典
 
+### Fonts Used:
+- DFGyoSho Pro-5
+- DFKyoKaSho Pro-5
+- DFKaiSho Pro-5 W5
+
 ### Yomitan Settings:
 
 #### Appearance
