@@ -123,6 +123,8 @@ div.entry:has(.definition-item[data-dictionary^="新明解国語辞典"]) { --ac
 .gloss-image-link { display: none; }
 .gloss-sc-span { color: var(--text-color) !important; border-color: var(--text-color) !important; }
 
+
+
 /*-----------*/
 /*-- Other --*/
 /*-----------*/
