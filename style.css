@@ -1,0 +1,135 @@
+/*-----------*/
+/*-- Theme --*/
+/*-----------*/
+
+/* Dark Mode */
+:root[data-theme="dark"] {
+    --dict-color-opacity: 100%;
+    --dict-color: var(--tag-dictionary-background-color);
+    --dict-bg-opacity: 0;
+
+    --text-color: #eff1f5;
+    --reason-text-color: #eff1f5;
+    --tag-text-color: #1e1e2e;
+    --background-color: #1e1e2e;
+}
+
+/* Light Mode */
+:root {
+    --dict-color-opacity: 100%;
+    --dict-color: var(--tag-dictionary-background-color);
+    --dict-bg-opacity: 0;
+
+    --text-color: #1e1e2e;
+    --reason-text-color: #1e1e2e;
+    --tag-text-color: #1e1e2e;
+    --background-color: #eff1f5;
+}
+
+
+
+/*-----------*/
+/*-- Fonts --*/
+/*-----------*/
+
+/* Font Families */
+:root,:root[data-theme="dark"] {
+    --gyousho-font: "DFGyoSho Pro-5";
+    --kyoukasho-font: "DFKyoKaSho Pro-5";
+    --kaisho-font: "DFKaiSho Pro-5 W5";
+    --mincho-font: "Hiragino Mincho Pro";
+    --english-font: "serif";
+}
+
+/* Term */
+.headword-term { font-family: var(--gyousho-font); }
+
+/* Furigana */
+.headword-reading { font-family: var(--kyoukasho-font); }
+
+/* Tag Label */
+.tag-label { font-family: var(--kaisho-font); font-size: 1.2em; }
+
+/* Tag Body */
+.tag-body { font-family: var(--english-font); }
+
+/* Definition */
+.gloss-list { font-family: var(--kaisho-font); font-size: 1.2em; }
+
+/* Grammar */
+.inflection-rule-chains { font-family: var(--kaisho-font); }
+
+/* Pitch */
+.pronunciation-list { font-family: var(--kyoukasho-font); font-size: 1.2em; }
+
+
+
+/*-----------------------*/
+/*-- Dictionary Colors --*/
+/*-----------------------*/
+
+/* Example Palettes */
+/* #F09EA7 #F6CA94 #FAFABE #C1EBC0 #C7CAFF #CDABEB #F6C2F3 */
+/* #9BAADD #95DBBA #EAB0E3 #F0A8A8 #F2EAC4 #E6CDA3 #9AE3B7 */
+/* #DED5F0 #BEB8E3 #A1A2D1 #A4BEDD #A9DADB #C2EDD7 #DCF5E7 */
+/* #A7B4E5 #8C9BDF #7386D8 #5A70D0 #3F5BC0 #2B4FA5 #1F4A8E */
+
+/* Main */
+div.entry:has(.definition-item[data-dictionary^="明鏡国語辞典"]) { --accent: #9BAADD; }
+div.entry:has(.definition-item[data-dictionary^="岩波国語辞"]) { --accent: #95DBBA; }
+div.entry:has(.definition-item[data-dictionary^="旺文社国語辞典"]) { --accent: #EAB0E3; }
+div.entry:has(.definition-item[data-dictionary^="三省堂国語辞典"]) { --accent: #F0A8A8; }
+div.entry:has(.definition-item[data-dictionary^="新選国語辞典"]) { --accent: #F2EAC4; }
+div.entry:has(.definition-item[data-dictionary^="漢検漢字辞典"]) { --accent: #E6CDA3; }
+div.entry:has(.definition-item[data-dictionary^="新明解国語辞典"]) { --accent: #9AE3B7; }
+
+/* Tags */
+.tag { --tag-color: var(--accent) !important; }
+.tag[data-category="frequency"] { --tag-color: color-mix(in srgb, var(--accent) 100%, var(--background-color)) !important; }
+.tag[data-category="pronunciation-dictionary"] { --tag-color: color-mix(in srgb, var(--accent) 80%, var(--background-color)) !important; }
+.tag[data-category="dictionary"] { --tag-color: color-mix(in srgb, var(--accent) 60%, var(--background-color)) !important; }
+
+/* Links */
+.definition-item a { color: var(--dict-color); text-decoration: none; }
+
+/* Definitions */
+.definition-item {
+    background-color: color-mix(in srgb, var(--dict-color) calc(var(--dict-bg-opacity) * var(--dict-color-opacity)), var(--background-color));
+    border-radius: 10px;
+    --dict-color: var(--accent); 
+    --dict-bg-opacity: 0.15;
+}
+
+
+
+/*---------------------------*/
+/*-- Dictionary Formatting --*/
+/*---------------------------*/
+
+/* 漢検漢字辞典 */
+.gloss-sc-div[data-sc-subentries^="子項目"] { display: none; }
+.gloss-sc-div[data-sc-subentries^="孫項目"] { display: none; }
+.gloss-sc-div:has(.gloss-sc-table-container) { display: none; }
+.gloss-sc-div:has(.gloss-sc-span[title="親字が頭以外につく熟語のうち、学習性の高いもの"]) { display: none; }
+
+/* 岩波国語辞典 */
+.gloss-sc-div:has(.gloss-image-link[data-path="iwakoku8/b275.png"]) { display: none; }
+.gloss-sc-div[data-sc-iwakoku8="blkkan"]:has(.gloss-sc-span[style="vertical-align: text-bottom;"]) { display: none; }
+
+/* 三省堂国語辞典 */
+.entry:has(.tag[title="子項目"]) { display: none; }
+.entry:has(.tag[title="句項目"]) { display: none; }
+
+/* 新選国語辞典 */
+.gloss-image-link { display: none; }
+.gloss-sc-span { color: var(--text-color) !important; border-color: var(--text-color) !important; }
+
+/*-----------*/
+/*-- Other --*/
+/*-----------*/
+
+/* Remove "Add reading" Button */
+button[title^="Add reading"] { display: none; }
+
+/* Inflection Icon */
+.inflection-source-icon[data-inflection-source="algorithm"]::after { content: "🌸"; }
